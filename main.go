@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/averystampp/blog/api"
 	"github.com/averystampp/sesame"
@@ -34,5 +35,12 @@ func main() {
 	})
 	api.AddUser()
 	defer db.Close()
-	rtr.StartServer(":443")
+	if os.Getenv("prod") == "true" {
+		rtr.KeyFile = "key.pem"
+		rtr.CertFile = "cert.pem"
+		rtr.StartServerTLS("443")
+
+	} else {
+		rtr.StartServer(":5000")
+	}
 }
