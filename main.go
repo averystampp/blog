@@ -38,7 +38,7 @@ func main() {
 	if os.Getenv("prod") == "true" {
 		rtr.KeyFile = "key.pem"
 		rtr.CertFile = "cert.pem"
-		rtr.StartServerTLS("443")
+		rtr.StartServerTLS(":443")
 
 	} else {
 		rtr.StartServer(":5000")
