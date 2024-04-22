@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Avery's Blog</title>
+</head>
+<body>
+    <h3>Avery Stampp's Blog</h3>
+    <div class="posts">
+        {{range .}}
+        <div class="single-post">
+            <a class="post-link" href="/post/{{.Id}}">
+                <div>
+                    <h3 class="title">{{.Title}}</h3>
+                    <p class="date">{{.Date}}</p> 
+                </div>
+            </a>
+        </div>
+        {{end}}
+    </div>
+</body>
+</html>
+
+<style>
+    .single-post{
+        text-align: center;
+        padding: 15px;
+        width: 8rem;
+        border: solid 1px black;
+        margin: 5px;
+    }
+    .posts{
+        display: flex;
+        padding: 15px;
+        border: solid 1px black;
+    }
+    .date{
+        font-size: 13px;
+    }
+    .post-link{
+        color: black;
+        text-decoration: none;
+    }
+</style>

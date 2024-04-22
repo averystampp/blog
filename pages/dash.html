@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h3>Dashboard</h3>
+    <div class="posts">
+        {{range .}}
+        <div class="single-post">
+                <div>
+                    <p><b>Post title: </b>{{.Title}}</p>
+                    <p><b>Date posted: </b>{{.Date}}</p>
+                    
+                    <a href="/delete/{{.Id}}">Delete</a>
+                    |
+                    <a href="/edit/{{.Id}}">Edit</a>
+                </div>
+        </div>
+        {{end}}
+    </div>
+</body>
+</html>
+
+<style>
+    .single-post{
+        margin: 5px;
+        border-top: 1.5px solid black;
+        align-items: center;
+        display: flex;
+    }
+</style>

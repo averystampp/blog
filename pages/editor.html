@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor</title>
+</head>
+<body>
+    <div class="form-container">
+        <form action="/post/create" method="post" class="post-form">
+            <label for="title">
+                Title of post
+                <input name="title" type="text">
+            </label>
+            <label for="post-text">
+                <p>Post text</p>
+                <textarea name="post" class="post-text"></textarea>
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+
+<style>
+    textarea{
+        resize: vertical;
+    }
+    .post-text{
+        width: 100%;
+        height: 25rem;
+    }
+    .form-container{
+        margin: 1rem;
+        padding: 1rem;
+        border: 1px solid black;
+    }
+</style>
