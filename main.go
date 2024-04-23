@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -33,14 +34,15 @@ func main() {
 
 		return err
 	})
+	db.Close()
 	api.AddUser()
-	defer db.Close()
 	if os.Getenv("prod") == "true" {
-		rtr.KeyFile = "key.pem"
+		fmt.Println("starting with tls")
 		rtr.CertFile = "cert.pem"
-		rtr.StartServerTLS(":443")
-
-	} else {
-		rtr.StartServer(":5000")
+		rtr.KeyFile = "key.pem"
+		rtr.StartServerTLS(":8080")
 	}
+
+	fmt.Println("starting on 8080")
+	rtr.StartServer(":8080")
 }
