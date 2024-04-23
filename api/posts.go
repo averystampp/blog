@@ -223,10 +223,10 @@ func Protected(h sesame.Handler) sesame.Handler {
 	return func(ctx sesame.Context) error {
 		session, err := ctx.Request().Cookie("session")
 		if err != nil {
-			return ErrorPage(ctx, err)
+			return err
 		}
 		if err = session.Valid(); err != nil {
-			return ErrorPage(ctx, err)
+			return err
 		}
 		db, err := bolt.Open("blog.db", 0660, nil)
 		if err != nil {
@@ -237,15 +237,15 @@ func Protected(h sesame.Handler) sesame.Handler {
 			exp := bucket.Get([]byte(session.Value))
 			t, err := time.Parse(time.DateTime, string(exp))
 			if err != nil {
-				return ErrorPage(ctx, err)
+				return err
 			}
 			if t.Before(time.Now()) {
-				return ErrorPage(ctx, fmt.Errorf("token is expired"))
+				return fmt.Errorf("token is expired")
 			}
 			return nil
 		})
 		if err != nil {
-			return ErrorPage(ctx, err)
+			return err
 		}
 		db.Close()
 		return h(ctx)
