@@ -38,8 +38,8 @@ func main() {
 	api.AddUser()
 	if os.Getenv("prod") == "true" {
 		fmt.Println("starting with tls")
-		rtr.CertFile = "cert.pem"
-		rtr.KeyFile = "key.pem"
+		rtr.CertFile = "ssl.pem"
+		rtr.KeyFile = "ssl.key"
 		rtr.StartServerTLS(":8080")
 	}
 
