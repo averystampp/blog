@@ -117,7 +117,7 @@ func Index(ctx sesame.Context) error {
 func PostByID(ctx sesame.Context) error {
 	id := ctx.Request().PathValue("id")
 	if id == "" {
-		return ErrorPage(ctx, fmt.Errorf("must have post id in params"))
+		return fmt.Errorf("must have post id in params")
 	}
 	db, err := bolt.Open("blog.db", 0660, nil)
 	if err != nil {
@@ -155,33 +155,14 @@ func Editor(ctx sesame.Context) error {
 	return tmpl.Execute(ctx.Response(), nil)
 }
 
-func ErrorPage(ctx sesame.Context, handleErr error) error {
-	tmpl, err := template.New("").Parse(`
-		<div>
-			<p>The server responded with an error: {{.}}</p>
-			<a href="/">Return Home</a>
-		</div>
-		
-	`)
-	if err != nil {
-		return err
-	}
-	ctx.Response().Header().Set("Content-Type", "text/html")
-	err = tmpl.Execute(ctx.Response(), handleErr)
-	if err != nil {
-		return err
-	}
-	return fmt.Errorf("")
-}
-
 func Login(ctx sesame.Context) error {
 	username := ctx.Request().PostFormValue("username")
 	if username == "" {
-		return ErrorPage(ctx, fmt.Errorf("must have username to login"))
+		return fmt.Errorf("must have username to login")
 	}
 	password := ctx.Request().PostFormValue("password")
 	if password == "" {
-		return ErrorPage(ctx, fmt.Errorf("must have password to login"))
+		return fmt.Errorf("must have password to login")
 	}
 	db, err := bolt.Open("blog.db", 0660, nil)
 	if err != nil {
@@ -196,7 +177,7 @@ func Login(ctx sesame.Context) error {
 		return bcrypt.CompareHashAndPassword(pwrd, []byte(password))
 	})
 	if err != nil {
-		return ErrorPage(ctx, fmt.Errorf("password is incorrect"))
+		return fmt.Errorf("password is incorrect")
 	}
 
 	uuid := uuid.New()
@@ -213,7 +194,7 @@ func Login(ctx sesame.Context) error {
 		return nil
 	})
 	if err != nil {
-		return ErrorPage(ctx, err)
+		return err
 	}
 	http.Redirect(ctx.Response(), ctx.Request(), "/", http.StatusSeeOther)
 	return nil
@@ -284,7 +265,7 @@ func AddUser() {
 func LoginPage(ctx sesame.Context) error {
 	tmpl, err := template.ParseFiles("./pages/login.html")
 	if err != nil {
-		return ErrorPage(ctx, err)
+		return err
 	}
 	return tmpl.Execute(ctx.Response(), nil)
 }
@@ -292,7 +273,7 @@ func LoginPage(ctx sesame.Context) error {
 func Delete(ctx sesame.Context) error {
 	id := ctx.Request().PathValue("id")
 	if id == "" {
-		return ErrorPage(ctx, fmt.Errorf("must have id in params"))
+		return fmt.Errorf("must have id in params")
 	}
 	db, err := bolt.Open("blog.db", 0660, nil)
 	if err != nil {
@@ -304,7 +285,7 @@ func Delete(ctx sesame.Context) error {
 		return tx.Bucket([]byte("posts")).Delete([]byte(id))
 	})
 	if err != nil {
-		return ErrorPage(ctx, err)
+		return err
 	}
 	http.Redirect(ctx.Response(), ctx.Request(), "/dashboard", http.StatusSeeOther)
 	return nil
@@ -313,7 +294,7 @@ func Delete(ctx sesame.Context) error {
 func Edit(ctx sesame.Context) error {
 	id := ctx.Request().PathValue("id")
 	if id == "" {
-		return ErrorPage(ctx, fmt.Errorf("must have id in params"))
+		return fmt.Errorf("must have id in params")
 	}
 	db, err := bolt.Open("blog.db", 0660, nil)
 	if err != nil {
@@ -331,11 +312,11 @@ func Edit(ctx sesame.Context) error {
 		return nil
 	})
 	if err != nil {
-		return ErrorPage(ctx, err)
+		return err
 	}
 	tmpl, err := template.ParseFiles("./pages/edit.html")
 	if err != nil {
-		return ErrorPage(ctx, err)
+		return err
 	}
 	return tmpl.Execute(ctx.Response(), post)
 }
@@ -352,7 +333,7 @@ func Update(ctx sesame.Context) error {
 	id := ctx.Request().PathValue("id")
 	idasint, err := strconv.Atoi(id)
 	if err != nil {
-		return ErrorPage(ctx, err)
+		return err
 	}
 	db, err := bolt.Open("blog.db", 0600, nil)
 	if err != nil {
