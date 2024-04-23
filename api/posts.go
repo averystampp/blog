@@ -167,8 +167,11 @@ func ErrorPage(ctx sesame.Context, handleErr error) error {
 		return err
 	}
 	ctx.Response().Header().Set("Content-Type", "text/html")
-
-	return tmpl.Execute(ctx.Response(), handleErr)
+	err = tmpl.Execute(ctx.Response(), handleErr)
+	if err != nil {
+		return err
+	}
+	return fmt.Errorf("")
 }
 
 func Login(ctx sesame.Context) error {
