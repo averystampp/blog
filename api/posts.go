@@ -211,6 +211,7 @@ func Protected(h sesame.Handler) sesame.Handler {
 		}
 		db, err := bolt.Open("blog.db", 0660, nil)
 		if err != nil {
+			db.Close()
 			return err
 		}
 		err = db.View(func(tx *bolt.Tx) error {
@@ -218,14 +219,17 @@ func Protected(h sesame.Handler) sesame.Handler {
 			exp := bucket.Get([]byte(session.Value))
 			t, err := time.Parse(time.DateTime, string(exp))
 			if err != nil {
+				db.Close()
 				return err
 			}
 			if t.Before(time.Now()) {
+				db.Close()
 				return fmt.Errorf("token is expired")
 			}
 			return nil
 		})
 		if err != nil {
+			db.Close()
 			return err
 		}
 		db.Close()
