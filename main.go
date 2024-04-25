@@ -16,7 +16,7 @@ func main() {
 
 	api.StartBlog(rtr)
 
-	db, err := bolt.Open("blog.db", 0660, nil)
+	db, err := bolt.Open("./db/blog.db", 0660, nil)
 	if err != nil {
 		log.Fatal(err)
 	}

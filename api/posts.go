@@ -51,7 +51,7 @@ func CreatePost(ctx sesame.Context) error {
 
 	draft := ctx.Request().PostFormValue("draft")
 
-	db, err := bolt.Open("blog.db", 0600, nil)
+	db, err := bolt.Open("./db/blog.db", 0600, nil)
 	if err != nil {
 		return err
 	}
@@ -92,7 +92,7 @@ func CreatePost(ctx sesame.Context) error {
 }
 
 func Index(ctx sesame.Context) error {
-	db, err := bolt.Open("blog.db", 0660, nil)
+	db, err := bolt.Open("./db/blog.db", 0660, nil)
 	if err != nil {
 		return err
 	}
@@ -127,7 +127,7 @@ func PostByID(ctx sesame.Context) error {
 	if id == "" {
 		return fmt.Errorf("must have post id in params")
 	}
-	db, err := bolt.Open("blog.db", 0660, nil)
+	db, err := bolt.Open("./db/blog.db", 0660, nil)
 	if err != nil {
 		return err
 	}
@@ -172,7 +172,7 @@ func Login(ctx sesame.Context) error {
 	if password == "" {
 		return fmt.Errorf("must have password to login")
 	}
-	db, err := bolt.Open("blog.db", 0660, nil)
+	db, err := bolt.Open("./db/blog.db", 0660, nil)
 	if err != nil {
 		return err
 	}
@@ -217,7 +217,7 @@ func Protected(h sesame.Handler) sesame.Handler {
 		if err = session.Valid(); err != nil {
 			return err
 		}
-		db, err := bolt.Open("blog.db", 0660, nil)
+		db, err := bolt.Open("./db/blog.db", 0660, nil)
 		if err != nil {
 			db.Close()
 			return err
@@ -259,7 +259,7 @@ func AddUser() {
 		fmt.Println("Did not create user")
 		return
 	}
-	db, err := bolt.Open("blog.db", 0660, nil)
+	db, err := bolt.Open("./db/blog.db", 0660, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -290,7 +290,7 @@ func Delete(ctx sesame.Context) error {
 	if id == "" {
 		return fmt.Errorf("must have id in params")
 	}
-	db, err := bolt.Open("blog.db", 0660, nil)
+	db, err := bolt.Open("./db/blog.db", 0660, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -311,7 +311,7 @@ func Edit(ctx sesame.Context) error {
 	if id == "" {
 		return fmt.Errorf("must have id in params")
 	}
-	db, err := bolt.Open("blog.db", 0660, nil)
+	db, err := bolt.Open("./db/blog.db", 0660, nil)
 	if err != nil {
 		return err
 	}
@@ -352,7 +352,7 @@ func Update(ctx sesame.Context) error {
 	if err != nil {
 		return err
 	}
-	db, err := bolt.Open("blog.db", 0600, nil)
+	db, err := bolt.Open("./db/blog.db", 0600, nil)
 	if err != nil {
 		return err
 	}
@@ -387,7 +387,7 @@ func Update(ctx sesame.Context) error {
 }
 
 func Dashboard(ctx sesame.Context) error {
-	db, err := bolt.Open("blog.db", 0660, nil)
+	db, err := bolt.Open("./db/blog.db", 0660, nil)
 	if err != nil {
 		return err
 	}
