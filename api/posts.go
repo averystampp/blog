@@ -21,6 +21,7 @@ type Post struct {
 	Title string
 	Date  string
 	Body  template.HTML
+	Draft bool
 }
 
 func StartBlog(rtr *sesame.Router) {
@@ -47,6 +48,9 @@ func CreatePost(ctx sesame.Context) error {
 	if title == "" {
 		return fmt.Errorf("must have post title")
 	}
+
+	draft := ctx.Request().PostFormValue("draft")
+
 	db, err := bolt.Open("blog.db", 0600, nil)
 	if err != nil {
 		return err
@@ -68,6 +72,9 @@ func CreatePost(ctx sesame.Context) error {
 			Title: title,
 			Date:  fmt.Sprintf("%s %d, %d", m.String(), d, y),
 			Body:  template.HTML(post),
+		}
+		if draft != "" {
+			post.Draft = true
 		}
 
 		asJson, err := json.Marshal(&post)
@@ -99,9 +106,10 @@ func Index(ctx sesame.Context) error {
 			if err != nil {
 				return err
 			}
-			posts = append(posts, post)
+			if !post.Draft {
+				posts = append(posts, post)
+			}
 			return nil
-
 		})
 	})
 	if err != nil {
@@ -233,7 +241,10 @@ func Protected(h sesame.Handler) sesame.Handler {
 			return err
 		}
 		db.Close()
-		return h(ctx)
+		if err = h(ctx); err != nil {
+			return err
+		}
+		return nil
 	}
 }
 
@@ -334,7 +345,9 @@ func Update(ctx sesame.Context) error {
 	if title == "" {
 		return fmt.Errorf("must have post title")
 	}
+	draft := ctx.Request().PostFormValue("draft")
 	id := ctx.Request().PathValue("id")
+
 	idasint, err := strconv.Atoi(id)
 	if err != nil {
 		return err
@@ -356,6 +369,9 @@ func Update(ctx sesame.Context) error {
 			Title: title,
 			Date:  fmt.Sprintf("%s %d, %d", m.String(), d, y),
 			Body:  template.HTML(post),
+		}
+		if draft != "" {
+			post.Draft = true
 		}
 		asJson, err := json.Marshal(&post)
 		if err != nil {

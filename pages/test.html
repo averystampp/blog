@@ -3,8 +3,12 @@
         <title>{{.Title}}</title>
     </head>
     <body>
+        
         <a href="/">Home</a>
         <div class="main">
+            {{if .Draft}}
+                <h2 class="draft-notice">This is a draft, it is not live</h2>
+            {{end}}
             <div class="title-div">
                 <h1 class="title">{{.Title}}</h1>
                 <p class="date">{{.Date}}</p>
@@ -17,6 +21,9 @@
 </html>
 
 <style>    
+    .draft-notice{
+        color: tomato;
+    }
     .title{
         font-size: 65;
         margin: 0;

@@ -5,28 +5,57 @@
 </head>
 <body>
     <h3>Dashboard</h3>
+    <span><a href="/">Home</a></span> 
+    
     <div class="posts">
         {{range .}}
-        <div class="single-post">
-                <div>
-                    <p><b>Post title: </b>{{.Title}}</p>
-                    <p><b>Date posted: </b>{{.Date}}</p>
-                    
-                    <a href="/delete/{{.Id}}">Delete</a>
-                    |
-                    <a href="/edit/{{.Id}}">Edit</a>
-                </div>
-        </div>
+        
+
+        {{if .Draft}}
+            <div class="draft">
+                <p>Status: <b>Draft</b></p>
+                <p>Title: <b>{{.Title}}</b></p>
+                <p>Date Posted: {{.Date}}</p>
+                <a href="/delete/{{.Id}}">Delete</a>
+                <a href="/edit/{{.Id}}">Edit</a>
+                <a href="/post/{{.Id}}">Preview</a>
+            </div>
+        {{else}}
+            <div class="published">
+                <p>Status: <b class="pub-header">Published</b></p>
+                <p>Title: <b>{{.Title}}</b></p>
+                <p>Date Posted: {{.Date}}</p>
+                <a href="/delete/{{.Id}}">Delete</a>
+                <a href="/edit/{{.Id}}">Edit</a>
+                <a href="/post/{{.Id}}">View Live</a>
+            </div>
+        {{end}}
+
         {{end}}
     </div>
 </body>
 </html>
 
 <style>
-    .single-post{
+    .published{
+        padding: 8px;
+        margin: 10px;
+        border: 1px solid black;
+        max-width: 10rem;
+        width: 10rem;
+        background-color: aquamarine;
+    }
+    .draft{
+        padding: 8px;
+        margin: 10px;
+        border: 1px solid black;
+        max-width: 10rem;
+        width: 10rem;
+        background-color: tomato;
+    }
+    .posts{
+        display: flex;
         margin: 5px;
         border-top: 1.5px solid black;
-        align-items: center;
-        display: flex;
     }
 </style>
