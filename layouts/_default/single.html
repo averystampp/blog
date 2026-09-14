@@ -1,0 +1,22 @@
+
+{{ $css := resources.Get "css/style.css" }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+<head>
+    <title>{{.Title}}</title>
+</head>
+
+<body>
+    <main class="main-content">
+        <article>
+            <div class="main-header">
+                <h1 class="title">{{ .Title }}</h1>
+                <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
+            </div>
+        
+            <div class="main-text">
+                {{ .Content }}
+
+            </div>
+        </article>
+    </main>
+</body>

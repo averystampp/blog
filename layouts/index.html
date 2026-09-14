@@ -1,0 +1,9 @@
+<h1>My Posts</h1>
+
+{{ range .Site.RegularPages }}
+  <article>
+    <h2>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h2>
+  </article>
+{{ end }}

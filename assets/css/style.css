@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto-Italic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+
+body {
+    color:#4a4036;
+    font-family: "Roboto", sans-serif;
+    background-color: #FBFBF7;
+}
+
+.main-header {
+    padding-top: 2.5rem;
+    text-align: center;
+}
+
+.main-text {
+    line-height: 2;
+    padding: 1rem;
+    margin: 3rem;
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+}
+
+
+
