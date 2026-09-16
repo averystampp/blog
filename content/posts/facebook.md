@@ -6,13 +6,13 @@ draft = true
 
 # Facebook settlement?
 
-Wait it's called [Meta](https://www.meta.com/about/company-info/), they sell sunglasses, VR headsets and our personal data (still). Lately our favorite way to share personal information has gotten into a lot of trouble with how it treats its users. This time with teen girls. I don't know if its important to rehash every detail of Metas recent legal battles as they have been plastered everywhere the past couple of weeks. But just as a primer for anyone who has no idea what is going on. [Meta settled](https://about.fb.com/news/2026/08/agreement-with-state-attorneys-general-supporting-teens/) with 57 attorney generals to change their practices including screen limits for children, the ability to turn off the algorithimic feed, disabling the like button, and some other content restrictions and moderation. Meta has also agreed to pay $18 billion (kind of). Meta will pay $12.7 billion to the states but will only pay the remaining $5.3 billion when two conditions are met.
+Wait it's called [Meta,](https://www.meta.com/about/company-info/) they sell sunglasses, VR headsets and our personal data (still). Lately our favorite way to share personal information has gotten into a lot of trouble with how it treats its users. This time with teen girls. I don't know if its important to rehash every detail of Metas recent legal battles as they have been plastered everywhere the past couple of weeks. But just as a primer for anyone who has no idea what is going on. [Meta settled](https://about.fb.com/news/2026/08/agreement-with-state-attorneys-general-supporting-teens/) with 57 attorney generals to change their practices including screen limits for children, the ability to turn off the algorithimic feed, disabling the like button, and some other content restrictions and moderation. Meta has also agreed to pay $18 billion (kind of). Meta will pay $12.7 billion to the states but will only pay the remaining $5.3 billion when two conditions are met.
 
 1. *"YouTube and TikTok implement a one-hour Daily Limit, Night Mode, and age assurance measures."*
 
 2. *"YouTube and TikTok each pay an amount matching the 30% figure, with half of the remaining funds tied to YouTube’s payment and half tied to TikTok’s."*
 
-Meta also does not accept any liability in this settlement and will not be held liable for any specific damages done to underage youths (however they still have litigation related to this). 
+Meta also does not accept any liability in this settlement and will not be held liable for any specific damages done to underage youths (however they still have other litigation). 
 
 Meta during this settlement has also called for TikTok and Youtube to do things aswell, putting the ball in their competitors court of billion dollar lawsuits and publicity nightmares. Meta in Q-3 alone this year spent about $10 billion dollars on legal fees (how?). But its not a stretch to say that if Meta has to pay, so will their competitors. Whether Meta really does believe in changing the tech landscape for the youth or because they need to share the joy of stratospherically high legal bills with their competitors.
 

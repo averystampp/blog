@@ -32,5 +32,33 @@ body {
     white-space: normal;
 }
 
+.navbar {
+    position: relative;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ddd;
+}
 
+.navbar h1 {
+    margin: 0;
+}
 
+.navbar nav {
+    position: absolute;
+    right: 20px;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+}

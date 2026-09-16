@@ -1,6 +1,25 @@
+<head>
+    <title>averystampp.com</title>
+    <link rel="stylesheet" href="/css/index.css">
+
+</head>
+
+<header class="navbar">
+    <h1>averystampp.com</h1>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+
 <h1>My Posts</h1>
 
-{{ range .Site.RegularPages }}
+{{ range where .Site.RegularPages "Section" "posts" }}
   <article>
     <h2>
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>

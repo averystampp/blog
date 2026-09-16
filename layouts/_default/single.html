@@ -1,9 +1,19 @@
 
-{{ $css := resources.Get "css/style.css" }}
-<link rel="stylesheet" href="{{ $css.RelPermalink }}">
 <head>
+    <link rel="stylesheet" href="/css/index.css">
     <title>{{.Title}}</title>
 </head>
+
+<header class="navbar">
+    <h1>averystampp.com</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
 <body>
     <main class="main-content">
