@@ -1,7 +1,7 @@
 +++
 title = 'Facebook'
 date = 2026-09-14T03:46:18-04:00
-draft = true
+draft = false
 +++
 
 # Facebook settlement?
