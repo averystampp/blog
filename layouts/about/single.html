@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/css/about.css">
+        <title>{{.Title}}</title>
+    </head>
+
+    <body>
+
+        {{partial "nav.html" .}}
+
+        {{ partial "language-switcher.html" . }}
+
+
+        <div class="main-header">
+            <h1 class="title">{{ .Title }}</h1>
+        </div>
+        
+        <div class="main-text">
+            {{ .Content }}
+        </div>
+
+    </body>
+</html>

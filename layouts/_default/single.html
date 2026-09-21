@@ -16,17 +16,28 @@
     </nav>
 </header>
 
+{{ range .Translations }}
+  <a href="{{ .RelPermalink }}">
+    {{ .Language.LanguageName }}
+  </a>
+{{ end }}
+
+
 <body>
     <main class="main-content">
         <article>
             <div class="main-header">
+                
                 <h1 class="title">{{ .Title }}</h1>
                 <p class="date">{{ .Date.Format "January 2, 2006" }}</p>
             </div>
         
             <div class="main-text">
                 {{ .Content }}
-
+                <p>Title: {{ .Title }}</p>
+<p>Kind: {{ .Kind }}</p>
+<p>Type: {{ .Type }}</p>
+<p>Layout: {{ .Layout }}</p>
             </div>
         </article>
     </main>

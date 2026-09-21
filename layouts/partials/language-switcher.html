@@ -1,0 +1,5 @@
+<nav class="language-switcher">
+    {{ range .Translations }}
+        <a href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a>
+    {{ end }}
+</nav>
