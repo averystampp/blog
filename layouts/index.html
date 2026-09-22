@@ -7,13 +7,58 @@
 
 {{ partial "nav.html" . }}
 
+<h1 class="post-call">Posts</h1>
 
-<h1>My Posts</h1>
+<div class="content">
+  {{ range where .Site.RegularPages "Section" "posts" }}
+    <div class="page">
+      <a class="page-link" href="{{ .RelPermalink }}">
+        <h2 class="page-title">{{ .Title }}</h2>
+        <span  class="page-date">{{ .Date.Format "January 2, 2006" }}</span>
+      </a>
+    </div>
+  {{ end }}
+</div>
 
-{{ range where .Site.RegularPages "Section" "posts" }}
-  <article>
-    <h2>
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    </h2>
-  </article>
-{{ end }}
+
+<style>
+  .content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    /* border: 1px solid black; */
+
+  }
+  .page{
+    text-align: center;
+    margin: 10px;
+    max-width: 14rem;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.page-link {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+}
+  .page-date{
+    margin: 0;
+    color: #B8B8B8;
+    font-size: smaller;
+  }
+  .page-title{
+    margin: 0;
+
+  }
+  .post-call{
+    text-align: center;
+  }
+</style>
